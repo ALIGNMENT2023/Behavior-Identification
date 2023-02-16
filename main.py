@@ -15,8 +15,7 @@ import xml.etree.cElementTree as ET
 import tkinter as tk
 from tkinter import filedialog
 import getpass
-user_name = getpass.getuser()  # 获取当前用户名
-
+user_name = getpass.getuser()  # get the user's name
 DELAY = 20  # keyboard delay (in milliseconds)
 WITH_QT = False
 try:
@@ -48,11 +47,11 @@ img_objects = []
 
 INPUT_DIR = args.input_dir
 OUTPUT_DIR = args.output_dir
-# 查看其他人的打标结果时 将下行中user_name改成对应的ID即可，如'yangxing'
-# merge为所有人的打标合并的结果
-# 摄像头位置:'top' or 'lateral'
+# When viewing other people's labeling results, change the user_name in the lower line to the corresponding ID, e.g. 'yangxing'
+# merge: outcome of all user's
+# camera's position: 'top' or 'lateral'
 camPos = 'lateral'
-#user_name='Administrator'# user_name = 'merge'
+# user_name='Administrator'# user_name = 'merge'
 OUTPUT_DIR = os.path.join(OUTPUT_DIR, camPos, user_name)
 # OUTPUT_DIR = os.path.join(OUTPUT_DIR, 'merge')
 # OUTPUT_DIR = 'D:/data/vidClip/sample/S09-label'
@@ -171,20 +170,6 @@ def voc_format(class_name, point):
     x, y = point
     items = map(str, [class_name, x, y])
     return items
-
-
-# def findIndex(obj_to_find):
-#     # return [(ind, img_objects[ind].index(obj_to_find)) for ind in xrange(len(img_objects)) if item in img_objects[ind]]
-#     ind = -1
-
-#     ind_ = 0
-#     for listElem in img_objects:
-#         if listElem == obj_to_find:
-#             ind = ind_
-#             return ind
-#         ind_ = ind_+1
-
-#     return ind
 
 
 def write_xml(xml_str, xml_path):
